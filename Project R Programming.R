@@ -1,6 +1,7 @@
-#Assignment 4
-#Team member: Sahand Yousefi- Tinglei Ruan
-#Question 1
+#R Project
+#By Sahand
+## Question 1 : Perform polynomial regression to predict wage using age. Use cross-validation to select the optimal degree d for the polynomial. What degree was chosen, and how does this compare to the results of hypothesis testing using ANOVA?
+## Make a plot of the resulting polynomial fit to the data.
 
 library(ISLR)
 #install.packages('ISLR')
@@ -27,22 +28,15 @@ degree.min <- which.min(crossv.errors)
 points(degree.min, crossv.errors[degree.min], col = 'red', cex = 2, pch = 19)
 
 
-#Question 2
+#Question 2: Fit a step function to predict wage using age, and perform cross-validation to choose the optimal number of cuts. Make a plot of the fit obtained.
 
 plot(wage~age, data = Wage, col = "red")
-
 age.range<-range(Wage$age)
-
 age.grid<-seq(from=age.range[1], to = age.range[2])
-
 fit<-lm(wage~poly(age, 3), data = Wage)
-
 preds<-predict(fit, newdata = list(age = age.grid))
-
 lines(age.grid, preds, col = "blue", lwd = 2)
 
-
-# Question 3
 
 cv.errs<-rep(NA, degree)
 
