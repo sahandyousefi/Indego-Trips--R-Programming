@@ -1,0 +1,153 @@
+---
+title: "Case Study 1"
+author: "Your Name Here"
+date:  
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    theme: simplex
+    highlight: zenburn
+---
+
+##### To complete this assignment, follow these steps:
+
+1. Download the `Rcasestudy1.Rmd` file from Moodle.
+
+2. Open `Rcasestudy1.Rmd` in RStudio.
+
+3. Replace the "Your Name Here" text in the `author:` field with your own name.
+
+4. Supply your solutions to the homework by editing `Rcasestudy1.Rmd`.
+
+5. When you have completed the homework and have **checked** that your code both runs in the Console and knits correctly when you click `Knit HTML`, rename the R Markdown file to `Rcasestudy1_YourNameHere.Rmd`, and submit on Moodle.  (YourNameHere should be changed to your own name.)
+
+##### Homework tips:
+
+1. Recall the following useful RStudio hotkeys.
+
+|Keystroke      | Description |
+|----------------|-----------------------------------------------------------------------------|
+| `<tab>`        | Autocompletes commands and filenames,  and lists arguments for functions.|
+| `<up>`         | Cycles through previous commands in the console prompt |
+| `<ctrl-up>`    | Lists history of previous commands matching an unfinished one |
+| `<ctrl-enter>` | Runs current line from source window to Console. Good for trying things out ideas from a source file. |
+| `<ESC>`        | Aborts an unfinished command and get out of the + prompt |
+
+
+
+
+**Note**: Shown above are the Windows/Linux keys.  For Mac OS X, the `<ctrl>` key should be substituted with the `<command>` (&#8984;) key.
+
+2. Instead of sending code line-by-line with `<ctrl-enter>`, you can send entire code chunks, and even run all of the code chunks in your .Rmd file. Look under the <Chunks> menu of the Source panel.
+
+3. Run your code in the Console and Knit HTML frequently to check for errors.
+
+4. You may find it easier to solve a problem by interacting only with the Console at first. 
+
+### Problem 1: Vector Boolean operations (15 points)
+
+##### R has two kinds of Boolean operators implemented, single (`&`, `|`) and double (`&&`, `||`).  
+
+One of these operators takes advantage of something called *lazy evaluation* while the other does not.  They also don't behave the same way when applied to *vectors*.  
+
+Read the help file (`help("||")`) and construct some examples to help figure out how the two behave.  
+
+To help you get started, try out the following two examples in your console:
+
+```{r, eval = FALSE}
+# Example:  The variable y.prob2a is never defined.  
+# (Do not define it!)
+# What happens when you run this code?
+x.prob2a <- 5
+(x.prob2a < 10) | (y.prob2a > 2)
+(x.prob2a < 10) || (y.prob2a > 2)
+```
+
+```{r, eval = FALSE}
+# Define vectors
+x.prob2a.vec <- c(TRUE, FALSE, FALSE)
+y.prob2a.vec <- c(TRUE, TRUE, FALSE)
+
+# Apply various Boolean operations to see what happens
+x.prob2a.vec & y.prob2a.vec
+x.prob2a.vec && y.prob2a.vec
+x.prob2a.vec | y.prob2a.vec
+x.prob2a.vec || y.prob2a.vec
+```
+
+Can you explain what's happening?  Write up a brief explanation below.
+
+<font color="#336600">
+
+**Replace this text with your explanation.**
+
+</font>
+
+
+### Problem 2: Indego Bike Share Service (25 points)
+
+All of the questions below are to be answered on the data file Indego_trips_Q4_2016.csv, which is posted on BBLearn.  This file has been edited from the data provided by Indego at https://www.rideindego.com/about/data/
+Indego is the bike share service in the City of Philadelphia, and the data file is a listing of every rental from every station for the fourth quarter of 2016.  If you are not familiar with this useful and popular service (there are over 175K rentals in the data file!), I suggest that you read more about it online and visit the stations around our campus.  As a part of the City’s commitment to sharing data, usage information on Indego is provided to residents on a regular basis.  
+
+(a) Create a data frame called Indego.df and read the contents of the csv file into it.
+```{r}
+# Edit me
+```
+
+(b)	Get summary information on this data frame.  What are the different pieces of information provided in the file?  How many trips are there total?  How many of these trips are One Way?  How many are Round Trip?  
+```{r}
+# Edit me
+```
+
+(c) What are the different types of users?(Check passholder_type)  What percentage of the users had the Indego30 pass?  What percentage had the IndegoFlex pass?  What percentage were Walk-up customers?
+
+```{r}
+# Edit me
+```
+
+(d) Look at trip #5.  How long did this trip last?  (The duration data is given in seconds.)  What is the station ID where the trip started?  What is the station ID where the trip ended?  Using the station list provided on the above website, can you find the actual address where the trip started and where it ended?
+```{r}
+# Edit me
+```
+
+(e) If you look at the summary information for this data frame, you will see that there are mins, means, etc provided for the ID number of the starting station and the ID number of the ending station.  However, mean ID number is not a useful quantity.  Convert both of these ID vectors into factors.  Then, rerun the summary() function and report on the top 5 most frequently used starting and ending stations, and how many trips originated or ended at each one.
+
+```{r}
+# Edit me
+```
+
+(f) Look up the help file for the plot() function.  Using the information that you just learned, plot the latitude vs. longitude for the starting point of each trip (start_lat and start_lon).
+
+```{r}
+# Edit me
+```
+
+(g) Set a vector t equal to the trip duration.  Then, set tmin equal to t in minutes and thr equal to t in hours.
+
+```{r}
+# Edit me
+```
+
+(h) Create a new data frame called indegomktg.df which includes the trip durations in hours and the passholder type.  Output its summary information.
+
+```{r}
+# Edit me
+```
+
+### Problem 3 (10 points)
+(a)	Create a vector called shortpass that includes the passholder types for all the trips that lasted less than 1 hour.  What percentage of the short trips were completed by Indego30 pass holders?
+```{r}
+# Edit me
+```
+(b)	Assume that you are looking to market podcasts and audiobooks that are stored on the bikes themselves (disposable earphones also available).  The podcasts tend to be around 30-40 minutes in length, whereas an audiobook is generally around 2-3 hours.  There will be short ads in each file which will generate revenue for Indego.  In order to increase the chances that the customers will listen to the offerings (and therefore the ads), figure out a good way to market podcasts or audiobooks at the beginning of the trip based on the passholder type.
+```{r}
+# Edit me
+```
+Write up a brief explanation below.
+
+<font color="#336600">
+
+**Replace this text with your explanation.**
+
+</font>
